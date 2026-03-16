@@ -5,15 +5,19 @@ import { makeMongoConnection } from "./src/mongodb/mongodb.js";
 import launchersRoutes from "./src/launchers.routes.js";
 
 const app = express();
-const PORT = 3006;
+const PORT = process.env.PORT;
 
 app.use(morgan("tiny"));
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.json());
+
 app.use(cors());
 
 await makeMongoConnection();
+
+app.use("/api/launchers", launchersRoutes);
 
 app.get("/", async (request, response) => {
     response.json({

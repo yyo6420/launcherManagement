@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 let mongoconnection;
-const MONGO_URI = "mongodb://yosef_ohayon:Bk7g4qudEw6ClSFV@ac-jduuodi-shard-00-00.tqv4vzx.mongodb.net:27017,ac-jduuodi-shard-00-01.tqv4vzx.mongodb.net:27017,ac-jduuodi-shard-00-02.tqv4vzx.mongodb.net:27017/agentsAndReports?ssl=true&replicaSet=atlas-tb5aka-shard-0&authSource=admin&retryWrites=true&w=majority"
+const MONGO_URI = process.env.MONGO_URI;
 
 export const makeMongoConnection = async () => {
     if (mongoconnection) return mongoconnection;
@@ -19,17 +19,17 @@ export const makeMongoConnection = async () => {
 };
 
 export const getdb = async () => {
-    if(!mongoconnection) await makeMongoConnection();
-    if(!mongoconnection) throw new Error("Mongo connection failed :(");
-    return mongoconnection?.db("launchersDB");
+    if (!mongoconnection) await makeMongoConnection();
+    if (!mongoconnection) throw new Error("Mongo connection failed :(");
+    return mongoconnection?.db(process.env.DB_NAME);
 }
 
 export const closeConnection = async () => {
-    if(!mongoconnection) return;
+    if (!mongoconnection) return;
     await mongoconnection.close();
     mongoconnection = null;
     console.log("mongo connection closed safely, bye bye ;)")
 }
 
-export const db = await getdb("launchersDB");
+export const db = await getdb(process.env.DB_NAME);
 export const launchersCollection = db?.collection("launchers");
