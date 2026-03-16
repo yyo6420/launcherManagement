@@ -1,0 +1,23 @@
+:root {
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.launchersTable {
+    margin-top: 1rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.row {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    text-align: right;
+}
