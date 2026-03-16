@@ -20,5 +20,16 @@ export const makeMongoConnection = async () => {
 
 export const getdb = async () => {
     if(!mongoconnection) await makeMongoConnection();
-    if(!mongoconnection) throw new Error("Mongo connection failed :(")
+    if(!mongoconnection) throw new Error("Mongo connection failed :(");
+    return mongoconnection?.db("launchersDB");
 }
+
+export const closeConnection = async () => {
+    if(!mongoconnection) return;
+    await mongoconnection.close();
+    mongoconnection = null;
+    console.log("mongo connection closed safely, bye bye ;)")
+}
+
+export const db = await getdb("launchersDB");
+export const launchersCollection = db?.collection("launchers");
