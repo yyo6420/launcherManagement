@@ -14,7 +14,7 @@ function LaunchersData({ launchersData }) {
                 </tr>
                 <tr>
                     {launchersData.map(launcher => {
-                        <Row name={launcher.name} rocketType={launcher.rocketType} latitude={launcher.latitude} longitude={launcher.longitude} city={launcher.city} />
+                        return <Row name={launcher.name} rocketType={launcher.rocketType} latitude={launcher.latitude} longitude={launcher.longitude} city={launcher.city} />
                     })}
                 </tr>
             </tbody>
