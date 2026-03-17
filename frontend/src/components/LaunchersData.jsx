@@ -12,11 +12,9 @@ function LaunchersData({ launchersData }) {
                     <th>נקודת אורך</th>
                     <th>עיר</th>
                 </tr>
-                <tr>
-                    {launchersData.map(launcher => {
-                        return <Row name={launcher.name} rocketType={launcher.rocketType} latitude={launcher.latitude} longitude={launcher.longitude} city={launcher.city} />
-                    })}
-                </tr>
+                {launchersData.map(launcher => {
+                    return <Row name={launcher.name} rocketType={launcher.rocketType} latitude={launcher.latitude} longitude={launcher.longitude} city={launcher.city} />
+                })}
             </tbody>
         </table>
     )
