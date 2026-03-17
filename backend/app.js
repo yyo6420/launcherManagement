@@ -32,7 +32,3 @@ app.get("/", async (request, response) => {
 app.listen(PORT, async () => {
     console.log(`listening on port ${PORT}...`);
 })
-
-//intelligenceCorps
-// airForce
-// systemAdministrator
