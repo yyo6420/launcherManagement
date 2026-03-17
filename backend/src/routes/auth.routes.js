@@ -15,7 +15,7 @@ router.post("/register/create", authorization(["systemAdministrator"]), asyncHan
     response.status(201).send({ message: "congratulations, the user created successfully :)", newUser });
 }))
 
-router.post("/login", authorization(["intelligenceCorps", "airForce", "systemAdministrator"]), asyncHandler(async (request, response) => {
+router.post("/login", asyncHandler(async (request, response) => {
     const { username, password } = request.body;
     if (!username || !password) {
         response.status(400).send({ message: "You must type a username and password" })

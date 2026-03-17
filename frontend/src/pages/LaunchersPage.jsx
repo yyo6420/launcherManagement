@@ -1,7 +1,7 @@
-import LaunchersData from "../components/LaunchersData"
+import LaunchersData from "../components/LaunchersData.jsx"
 import { launchersData } from "../utills/launchersFunctions.js"
 
-function HomePage() {
+function LaunchersPage() {
     return (
         <>
             <h1>רשימת משגרים</h1>
@@ -13,4 +13,4 @@ function HomePage() {
     )
 }
 
-export default HomePage
+export default LaunchersPage
