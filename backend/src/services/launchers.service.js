@@ -1,4 +1,4 @@
-import { db, launchersCollection } from "./mongodb/mongodb.js"
+import { db, launchersCollection } from "../mongodb/mongodb.js"
 
 export const getAllLauncers = async () => {
     if (!launchersCollection) {

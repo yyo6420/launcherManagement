@@ -2,7 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { makeMongoConnection } from "./src/mongodb/mongodb.js";
-import launchersRoutes from "./src/launchers.routes.js";
+import launchersRoutes from "./src/routes/launchers.routes.js";
+import authRoutes from "./src/routes/auth.routes.js"
 
 const app = express();
 const PORT = process.env.PORT;
@@ -19,6 +20,8 @@ await makeMongoConnection();
 
 app.use("/api/launchers", launchersRoutes);
 
+app.use("/api/auth", authRoutes);
+
 app.get("/", async (request, response) => {
     response.json({
         message: "Welcome to Launchers Management API",
@@ -29,3 +32,7 @@ app.get("/", async (request, response) => {
 app.listen(PORT, async () => {
     console.log(`listening on port ${PORT}...`);
 })
+
+//intelligenceCorps
+// airForce
+// systemAdministrator
